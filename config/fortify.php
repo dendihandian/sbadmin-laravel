@@ -61,7 +61,10 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    // 'home' => RouteServiceProvider::HOME,
+    // 'home' => route('admin.dashboard'),
+    'home' => '/admin/dashboard',
+
 
     /*
     |--------------------------------------------------------------------------

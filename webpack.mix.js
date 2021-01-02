@@ -15,6 +15,7 @@ mix.js('resources/js/app/app.js', 'public/js')
     .js('resources/js/admin/admin.js', 'public/js')
     .sass('resources/sass/app/app.scss', 'public/css')
     .sass('resources/sass/admin/admin.scss', 'public/css')
+    .copy('node_modules/startbootstrap-sb-admin-2/img', 'public/images/sbadmin')
     .sourceMaps()
     .browserSync('sbadmin-laravel-starter.test')
     .version();
