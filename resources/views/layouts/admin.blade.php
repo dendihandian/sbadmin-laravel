@@ -15,6 +15,9 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/admin.js') }}" defer></script>
 </head>
 <body id="page-top">
 
@@ -68,8 +71,7 @@
     <!-- Logout Modal-->
     @include('admin._partials.logout-modal')
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/admin.js') }}"></script>
+    <!-- The Page Specific Script -->
     @yield('script')
 
 </body>
