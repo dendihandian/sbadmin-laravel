@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserManagementRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -70,8 +71,14 @@ class UserManagementController extends AdminBaseController
 
     public function datatable()
     {
-        $users = User::with('roles')->latest()->get();
+        $users = User::all();
         return Datatables::of($users)
+            ->editColumn('created_at', function($user){
+                return $user->created_at->format(config('sbadmin.utilities.date_format.php'));
+            })
+            ->addColumn('action', function($user){
+                return view('admin.users._partials.table-action', ['user' => $user]);
+            })
             ->make(true);
     }
 }

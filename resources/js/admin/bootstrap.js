@@ -9,7 +9,7 @@ try {
     require('chart.js/dist/Chart.bundle');
 
     // these require still causing issue
-    // require('datatables.net-bs4')( window, $ );
+    require('datatables.net-bs4');
 
     require('startbootstrap-sb-admin-2/js/sb-admin-2');
 
