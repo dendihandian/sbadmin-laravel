@@ -7,11 +7,10 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    
-    <li class="nav-item active">
+    <li class="nav-item @if (route('admin.dashboard') === $currentUrl) active @endif">
         <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>{{ __('Dashboard') }}</span>
         </a>
     </li>
     
@@ -25,7 +24,7 @@
     </div>
 
     <!-- Nav Item -->
-    <li class="nav-item">
+    <li class="nav-item @if (route('admin.users.index') === $currentUrl) active @endif">
         <a class="nav-link" href="{{ route('admin.users.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Users Management') }}</span>

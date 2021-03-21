@@ -13,6 +13,8 @@ class UserManagementController extends AdminBaseController
 
     public function __construct(User $userModel)
     {
+        parent::__construct();
+
         $this->userModel = $userModel;
     }
 
