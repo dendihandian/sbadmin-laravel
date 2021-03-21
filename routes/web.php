@@ -29,7 +29,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::get('/create', [UserManagementController::class, 'create'])->name('create'); // admin.users.create
         Route::get('/datatable', [UserManagementController::class, 'datatable'])->name('datatable'); // admin.users.datatable
 
-        Route::prefix('{user}')->group(function () {
+        Route::prefix('{userId}')->group(function () {
             Route::get('/', [UserManagementController::class, 'show'])->name('show'); // admin.users.show
             Route::patch('/', [UserManagementController::class, 'update'])->name('update'); // admin.users.update
             Route::delete('/', [UserManagementController::class, 'delete'])->name('delete'); // admin.users.delete

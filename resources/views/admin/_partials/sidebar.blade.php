@@ -26,9 +26,9 @@
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Users') }}</span>
+            <span>{{ __('Users Management') }}</span>
         </a>
     </li>
 
