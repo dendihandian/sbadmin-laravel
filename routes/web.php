@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\UserManagementController;
 
 /*
@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [AdminHomeController::class, 'dashboard'])->name('dashboard');
 
     // User Management
     Route::prefix('users')->name('users.')->group(function () {
