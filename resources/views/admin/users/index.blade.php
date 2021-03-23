@@ -7,6 +7,8 @@
         <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{ route('admin.users.create') }}"><i class="fas fa-plus fa-sm text-white-50 mr-2"></i> <span>{{ __('Create User') }}</span></a>
     </div>
 
+    @include('admin._components.flash')
+
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">{{ __('User List') }}</h6>

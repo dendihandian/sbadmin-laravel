@@ -36,4 +36,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
             Route::get('/edit', [UserManagementController::class, 'edit'])->name('edit'); // admin.users.edit
         });
     });
+
+    // Access Control List
 });
