@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\RoleManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 
 /*
@@ -37,5 +38,18 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         });
     });
 
-    // Access Control List
+    // Role Management
+    Route::prefix('roles')->name('roles.')->group(function () {
+        Route::get('/', [RoleManagementController::class, 'index'])->name('index'); // admin.roles.index
+        Route::post('/', [RoleManagementController::class, 'store'])->name('store'); // admin.roles.store
+        Route::get('/create', [RoleManagementController::class, 'create'])->name('create'); // admin.roles.create
+        Route::get('/datatable', [RoleManagementController::class, 'datatable'])->name('datatable'); // admin.roles.datatable
+
+        Route::prefix('{roleId}')->group(function () {
+            Route::get('/', [RoleManagementController::class, 'show'])->name('show'); // admin.roles.show
+            Route::patch('/', [RoleManagementController::class, 'update'])->name('update'); // admin.roles.update
+            Route::delete('/', [RoleManagementController::class, 'delete'])->name('delete'); // admin.roles.delete
+            Route::get('/edit', [RoleManagementController::class, 'edit'])->name('edit'); // admin.roles.edit
+        });
+    });
 });
