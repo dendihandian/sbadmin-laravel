@@ -49,8 +49,8 @@
                 serverSide: true,
                 ajax: '{{ route('admin.roles.datatable') }}',
                 columns: [
-                    { data: 'display_name', name: 'display_name'},
                     { data: 'name', name: 'name'},
+                    { data: 'display_name', name: 'display_name'},
                     { data: 'created_at', name: 'created_at'},
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ],

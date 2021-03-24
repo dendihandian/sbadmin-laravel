@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\RoleManagementRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoleManagementController extends AdminBaseController
 {
+    protected $roleModel;
+
     public function __construct(Role $roleModel)
     {
         parent::__construct();
@@ -25,8 +28,10 @@ class RoleManagementController extends AdminBaseController
         return view('admin.roles.create');
     }
 
-    public function store(Request $request)
+    public function store(RoleManagementRequest $request)
     {
+        $this->roleModel->create($request->only($this->roleModel->getFillable()));
+
         $request->session()->flash('success', __('Role Created'));
         return redirect()->back();
     }
@@ -43,8 +48,10 @@ class RoleManagementController extends AdminBaseController
         return view('admin.roles.edit', ['role' => $role]);
     }
 
-    public function update(Request $request, int $roleId)
+    public function update(RoleManagementRequest $request, int $roleId)
     {
+        $this->roleModel->create($request->only($this->roleModel->getFillable()));
+
         $request->session()->flash('success', __('Role Updated'));
         return redirect()->back();
     }

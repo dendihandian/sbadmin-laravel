@@ -45,7 +45,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::get('/create', [RoleManagementController::class, 'create'])->name('create'); // admin.roles.create
         Route::get('/datatable', [RoleManagementController::class, 'datatable'])->name('datatable'); // admin.roles.datatable
 
-        Route::prefix('{roleId}')->group(function () {
+        Route::prefix('{roleId}')->middleware(['find_role'])->group(function () {
             Route::get('/', [RoleManagementController::class, 'show'])->name('show'); // admin.roles.show
             Route::patch('/', [RoleManagementController::class, 'update'])->name('update'); // admin.roles.update
             Route::delete('/', [RoleManagementController::class, 'delete'])->name('delete'); // admin.roles.delete
