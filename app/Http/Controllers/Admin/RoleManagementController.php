@@ -50,7 +50,7 @@ class RoleManagementController extends AdminBaseController
 
     public function update(RoleManagementRequest $request, int $roleId)
     {
-        $this->roleModel->create($request->only($this->roleModel->getFillable()));
+        $request->role->update($request->only($this->roleModel->getFillable()));
 
         $request->session()->flash('success', __('Role Updated'));
         return redirect()->back();
@@ -58,7 +58,7 @@ class RoleManagementController extends AdminBaseController
 
     public function delete(Request $request, int $roleId)
     {
-        Role::where('id', $roleId)->delete();
+        $request->role->delete();
         $request->session()->flash('success', __('Role Deleted'));
         return redirect()->back();
     }

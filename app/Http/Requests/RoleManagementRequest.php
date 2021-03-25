@@ -45,6 +45,7 @@ class RoleManagementRequest extends FormRequest
     {
         $this->merge([
             'name' => isset($this->name) && !empty($this->name) ? Str::slug($this->name) : null,
+            'guard_name' => $this->guard_name ?? Guard::getDefaultName(static::class),
         ]);
     }
 
@@ -53,10 +54,10 @@ class RoleManagementRequest extends FormRequest
      */
     public function withValidator(Validator $validator)
     {
-        if (!$validator->fails()) {
-            $this->merge([
-                'guard_name' => $this->guard_name ?? Guard::getDefaultName(static::class),
-            ]);
-        }
+        // if (!$validator->fails()) {
+        //     $this->merge([
+        //         'guard_name' => $this->guard_name ?? Guard::getDefaultName(static::class),
+        //     ]);
+        // }
     }
 }

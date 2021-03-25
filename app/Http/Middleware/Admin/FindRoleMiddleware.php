@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Admin;
 
 use Closure;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 
 class FindRoleMiddleware
 {
