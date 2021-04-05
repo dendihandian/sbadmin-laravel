@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserManagementRequest;
 use App\Models\User;
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserManagementController extends AdminBaseController
@@ -17,6 +19,10 @@ class UserManagementController extends AdminBaseController
         parent::__construct();
 
         $this->userModel = $userModel;
+
+        View::share('role_options', Role::all()->keyBy('id')->transform(function($role){
+            return $role->display_name ?? $role->name;
+        })); // TODO: better if cached
     }
 
     public function index()
