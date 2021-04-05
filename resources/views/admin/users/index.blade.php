@@ -20,6 +20,7 @@
                         <tr>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Email') }}</th>
+                            <th>{{ __('Role') }}</th>
                             <th>{{ __('Created At') }}</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
@@ -28,6 +29,7 @@
                         <tr>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Email') }}</th>
+                            <th>{{ __('Role') }}</th>
                             <th>{{ __('Created At') }}</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
@@ -51,6 +53,7 @@
                 columns: [
                     { data: 'name', name: 'name'},
                     { data: 'email', name: 'email'},
+                    { data: 'role', name: 'role'},
                     { data: 'created_at', name: 'created_at'},
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ],

@@ -20,7 +20,7 @@ class UserManagementController extends AdminBaseController
 
         $this->userModel = $userModel;
 
-        View::share('role_options', Role::all()->keyBy('id')->transform(function($role){
+        View::share('role_options', Role::all()->keyBy('name')->transform(function($role){
             return $role->display_name ?? $role->name;
         })); // TODO: better if cached
     }
@@ -37,20 +37,23 @@ class UserManagementController extends AdminBaseController
     
     public function store(UserManagementRequest $request)
     {
-        $this->userModel->create($request->only($this->userModel->getFillable()));
+        $user = $this->userModel->create($request->only($this->userModel->getFillable()));
+
+        if ($request->role ?? false) $user->syncRoles([$request->role]);
+
         $request->session()->flash('success', __('User Created'));
         return redirect()->back();
     }
 
     public function show(int $userId)
     {
-        $user = $this->userModel->find($userId);
+        $user = $this->userModel->with('roles')->find($userId);
         return view('admin.users.show', compact('user'));
     }
 
     public function edit(int $userId)
     {
-        $user = $this->userModel->find($userId);
+        $user = $this->userModel->with('roles')->find($userId);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -59,10 +62,7 @@ class UserManagementController extends AdminBaseController
         $user =$this->userModel->find($userId);
         $user->update($request->only($this->userModel->getFillable()));
 
-        // $user->detachRoles();
-        // if ($request->has('role') && (int) $request->get('role')) {
-        //     $user->attachRole((int) $request->get('role'));
-        // }
+        if ($request->role ?? false) $user->syncRoles([$request->role]);
 
         $request->session()->flash('success', __('User Updated'));
         return redirect()->back();
@@ -77,10 +77,13 @@ class UserManagementController extends AdminBaseController
 
     public function datatable()
     {
-        $users = User::all();
+        $users = User::with('roles')->get();
         return Datatables::of($users)
             ->editColumn('created_at', function($user){
                 return $user->created_at->format(config('sbadmin.utilities.date_format.php'));
+            })
+            ->addColumn('role', function($user){
+                return $user->roles[0]->name ?? '-';
             })
             ->addColumn('action', function($user){
                 return view('admin.users._partials.table-action', ['user' => $user]);
