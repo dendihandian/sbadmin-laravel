@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exceptions\YouCannotDeleteYourself;
 use App\Http\Requests\UserManagementRequest;
 use App\Models\User;
 use App\Models\Role;
@@ -12,13 +13,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class UserManagementController extends AdminBaseController
 {
-    protected $userModel;
-
-    public function __construct(User $userModel)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->userModel = $userModel;
 
         View::share('role_options', Role::all()->keyBy('name')->transform(function($role){
             return $role->display_name ?? $role->name;
@@ -37,7 +34,7 @@ class UserManagementController extends AdminBaseController
     
     public function store(UserManagementRequest $request)
     {
-        $user = $this->userModel->create($request->only($this->userModel->getFillable()));
+        $user = User::create($request->only(User::FILLABLE_FIELDS));
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);
 
@@ -45,22 +42,22 @@ class UserManagementController extends AdminBaseController
         return redirect()->back();
     }
 
-    public function show(int $userId)
+    public function show(Request $request)
     {
-        $user = $this->userModel->with('roles')->find($userId);
+        $user = $request->_user;
         return view('admin.users.show', compact('user'));
     }
 
-    public function edit(int $userId)
+    public function edit(Request $request)
     {
-        $user = $this->userModel->with('roles')->find($userId);
+        $user = $request->_user;
         return view('admin.users.edit', compact('user'));
     }
 
     public function update(UserManagementRequest $request, int $userId)
     {
-        $user =$this->userModel->find($userId);
-        $user->update($request->only($this->userModel->getFillable()));
+        $user = $request->_user;
+        $user->update($request->only(User::FILLABLE_FIELDS);
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);
 
@@ -70,7 +67,12 @@ class UserManagementController extends AdminBaseController
 
     public function delete(Request $request, int $userId)
     {
-        $this->userModel->where('id', $userId)->delete();
+        $user = $request->_user;
+        if ($request->user()->id === (int) $user->id) {
+            throw new YouCannotDeleteYourself();
+        };
+
+        $user->delete();
         $request->session()->flash('success', __('User Deleted'));
         return redirect()->route('admin.users.index');
     }

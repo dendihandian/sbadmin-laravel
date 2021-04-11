@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin\FindRoleMiddleware;
+use App\Http\Middleware\Admin\FindUserMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'find_role' => FindRoleMiddleware::class,
+        'find_user' => FindUserMiddleware::class,
     ];
 }
