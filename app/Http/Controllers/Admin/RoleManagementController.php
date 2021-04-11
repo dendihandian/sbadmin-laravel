@@ -45,22 +45,16 @@ class RoleManagementController extends AdminBaseController
 
     public function edit(Request $request, int $roleId)
     {
+        $this->checkForAdminRole($request);
         $role = $request->role;
-
-        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
-            throw new AdminRoleCannotBeChangedOrRemoved();
-        }
 
         return view('admin.roles.edit', ['role' => $role]);
     }
 
     public function update(RoleManagementRequest $request, int $roleId)
     {
+        $this->checkForAdminRole($request);
         $role = $request->role;
-
-        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
-            throw new AdminRoleCannotBeChangedOrRemoved();
-        }
 
         $role->update($request->only($this->roleModel->getFillable()));
 
@@ -70,11 +64,8 @@ class RoleManagementController extends AdminBaseController
 
     public function delete(Request $request, int $roleId)
     {
+        $this->checkForAdminRole($request);
         $role = $request->role;
-
-        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
-            throw new AdminRoleCannotBeChangedOrRemoved();
-        }
 
         $role->delete();
         $request->session()->flash('success', __('Role Deleted'));
@@ -92,5 +83,16 @@ class RoleManagementController extends AdminBaseController
                 return view('admin.roles._partials.table-action', ['role' => $role]);
             })
             ->make(true);
+    }
+
+    private function checkForAdminRole(Request $request)
+    {
+        $role = $request->role ?? null;
+
+        if (!$role) abort(500);
+
+        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
+            throw new AdminRoleCannotBeChangedOrRemoved();
+        }
     }
 }
