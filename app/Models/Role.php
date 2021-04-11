@@ -9,5 +9,7 @@ class Role extends SpatieRoleModel
 {
     use HasFactory;
 
+    const NAME_ADMINISTRATOR = 'administrator';
+
     protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
 }

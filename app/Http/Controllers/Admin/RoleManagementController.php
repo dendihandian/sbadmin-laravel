@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exceptions\AdminRoleCannotBeChangedOrRemoved;
 use App\Http\Requests\RoleManagementRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -36,21 +37,32 @@ class RoleManagementController extends AdminBaseController
         return redirect()->back();
     }
 
-    public function show(int $roleId)
+    public function show(Request $request, int $roleId)
     {
-        $role = Role::find($roleId);
+        $role = $request->role;
         return view('admin.roles.show', ['role' => $role]);
     }
 
-    public function edit(int $roleId)
+    public function edit(Request $request, int $roleId)
     {
-        $role = Role::find($roleId);
+        $role = $request->role;
+
+        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
+            throw new AdminRoleCannotBeChangedOrRemoved();
+        }
+
         return view('admin.roles.edit', ['role' => $role]);
     }
 
     public function update(RoleManagementRequest $request, int $roleId)
     {
-        $request->role->update($request->only($this->roleModel->getFillable()));
+        $role = $request->role;
+
+        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
+            throw new AdminRoleCannotBeChangedOrRemoved();
+        }
+
+        $role->update($request->only($this->roleModel->getFillable()));
 
         $request->session()->flash('success', __('Role Updated'));
         return redirect()->back();
@@ -58,7 +70,13 @@ class RoleManagementController extends AdminBaseController
 
     public function delete(Request $request, int $roleId)
     {
-        $request->role->delete();
+        $role = $request->role;
+
+        if ((string) $role->name === Role::NAME_ADMINISTRATOR) {
+            throw new AdminRoleCannotBeChangedOrRemoved();
+        }
+
+        $role->delete();
         $request->session()->flash('success', __('Role Deleted'));
         return redirect()->back();
     }

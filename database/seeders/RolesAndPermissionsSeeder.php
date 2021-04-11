@@ -45,14 +45,14 @@ class RolesAndPermissionsSeeder extends Seeder
     public static function role_permissions()
     {
         return [
-            'admin' => array_keys(self::permissions()),
+            'administrator' => array_keys(self::permissions()),
         ];
     }
 
     public static function roles()
     {
         return [
-            'admin' => [
+            'administrator' => [
                 'display_name' => 'Administrator',
                 'description' => 'The role with full authorities',
             ],
