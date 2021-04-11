@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDisplayNameToRolesTable extends Migration
+class AddDisplayNameAndDescriptionToRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddDisplayNameToRolesTable extends Migration
     {
         Schema::table('roles', function (Blueprint $table) {
             $table->text('display_name')->nullable()->after('name');
+            $table->text('description')->nullable()->after('display_name');
         });
     }
 
@@ -26,6 +27,7 @@ class AddDisplayNameToRolesTable extends Migration
     public function down()
     {
         Schema::table('roles', function (Blueprint $table) {
+            $table->dropColumn('description');
             $table->dropColumn('display_name');
         });
     }

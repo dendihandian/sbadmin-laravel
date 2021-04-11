@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Models\Permission as SpatiePermissionModel;
+
+class Permission extends SpatiePermissionModel
+{
+    use HasFactory;
+
+    protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
+}
