@@ -31,6 +31,7 @@ class RoleManagementRequest extends FormRequest
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:128', Rule::unique('roles', 'name')],
             'display_name' => ['nullable', 'string', 'min:3', 'max:128'],
+            'description' => ['nullable', 'string', 'min:3', 'max:256'],
         ];
 
         // override rules for edit

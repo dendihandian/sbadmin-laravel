@@ -1,6 +1,8 @@
 <div class="form-group col-lg-{{ $_col ?? 6 }}">
     <label for="{{ $_name }}">{{ $_title ?? '' }}</label>
-    <input class="form-control @error($_name) is-invalid @enderror" id="{{ $_name }}" type="{{ $_type ?? 'text' }}" name="{{ $_name }}" value="{{  old($_name) ?? $_value ?? ''}}" aria-describedby="{{$_name}}_help" @if ($readonly ?? false) readonly @endif autocomplete="off"/>
+
+    <textarea class="form-control" name="{{ $_name }}" id="{{ $_name }}" cols="{{ $_cols ?? 30}}" rows="{{ $_rows ?? 3 }}" style="resize: {{ $_resize ?? 'none' }};">{{ $_value ?? ''}}</textarea>
+
     @error($_name)
         <span class="invalid-feedback" user="alert"><strong>{{ $message }}</strong></span>
     @else

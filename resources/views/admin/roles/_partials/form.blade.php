@@ -13,3 +13,13 @@
         '_desc' => __('A display name for the role'),
     ])
 </div>
+
+<div class="row">
+    @include('admin._components.forms.textarea', [
+        '_title' => __('Role Description'),
+        '_name' => 'description',
+        '_value' => $role->description ?? '',
+        '_desc' => __('A description for the role'),
+        '_col' => 12,
+    ])
+</div>

@@ -20,6 +20,30 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        {{ __('Content Management') }}
+    </div>
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-user"></i>
+            <span>{{ __('Posts') }}</span>
+        </a>
+    </li>
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-user"></i>
+            <span>{{ __('Pages') }}</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         {{ __('Administration') }}
     </div>
 
@@ -32,34 +56,10 @@
     </li>
 
     <!-- Nav Item -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+    <li class="nav-item @if (route('admin.roles.index') === $currentUrl) active @endif">
+        <a class="nav-link" href="{{ route('admin.roles.index') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Access Control List') }}</span>
-        </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        {{ __('Access Control List') }}
-    </div>
-
-    <!-- Nav Item -->
-    <li class="nav-item @if (route('admin.users.index') === $currentUrl) active @endif">
-        <a class="nav-link" href="{{ route('admin.users.index') }}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Users Management') }}</span>
-        </a>
-    </li>
-
-    <!-- Nav Item -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Access Control List') }}</span>
+            <span>{{ __('Roles Management') }}</span>
         </a>
     </li>
 

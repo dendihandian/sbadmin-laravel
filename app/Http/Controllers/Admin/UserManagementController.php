@@ -83,7 +83,7 @@ class UserManagementController extends AdminBaseController
                 return $user->created_at->format(config('sbadmin.utilities.date_format.php'));
             })
             ->addColumn('role', function($user){
-                return $user->roles[0]->name ?? '-';
+                return $user->roles[0]->display_name ?? $user->roles[0]->display_name ?? '-';
             })
             ->addColumn('action', function($user){
                 return view('admin.users._partials.table-action', ['user' => $user]);

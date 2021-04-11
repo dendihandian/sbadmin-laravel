@@ -9,5 +9,5 @@ class Role extends SpatieRoleModel
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'display_name', 'guard_name'];
+    protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
 }

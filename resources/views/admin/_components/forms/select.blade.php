@@ -1,4 +1,4 @@
-<div class="form-group col-lg-4">
+<div class="form-group col-lg-{{ $_col ?? 6 }}">
     <label for="select-{{$_name}}">{{ $_title ?? '' }}</label>
     <select name="{{$_name}}" id="select-{{ $_name }}" class="custom-select @error($_name) is-invalid @enderror" @if ($readonly ?? false) disabled @endif>
         <option selected disabled>{{ __('Select Role') }}</option>
