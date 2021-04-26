@@ -57,7 +57,7 @@ class UserManagementController extends AdminBaseController
     public function update(UserManagementRequest $request, int $userId)
     {
         $user = $request->_user;
-        $user->update($request->only(User::FILLABLE_FIELDS);
+        $user->update($request->only(User::FILLABLE_FIELDS));
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);
 
