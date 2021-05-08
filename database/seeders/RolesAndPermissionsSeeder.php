@@ -63,22 +63,28 @@ class RolesAndPermissionsSeeder extends Seeder
     {
         return [
             // Users Management
-            'users.browse' => 'Browse User',
-            'users.create' => 'Create User',
-            'users.edit' => 'Edit User',
-            'users.delete' => 'Delete User',
+            'users.browse' => 'User Browse',
+            'users.create' => 'User Create ',
+            'users.edit' => 'User Edit',
+            'users.delete' => 'User Delete',
 
             // Roles Management
-            'roles.browse' => 'Browse Role',
-            'roles.create' => 'Create Role',
-            'roles.edit' => 'Edit Role',
-            'roles.delete' => 'Delete Role',
+            'roles.browse' => 'Role Browse',
+            'roles.create' => 'Role Create ',
+            'roles.edit' => 'Role Edit',
+            'roles.delete' => 'Role Delete',
 
             // Posts
-            'posts.browse' => 'Browse Post',
-            'posts.create' => 'Create Post',
-            'posts.edit' => 'Edit Post',
-            'posts.delete' => 'Delete Post',
+            'posts.browse' => 'Post Browse',
+            'posts.create' => 'Post Create ',
+            'posts.edit' => 'Post Edit',
+            'posts.delete' => 'Post Delete',
+
+            // Pages
+            'pages.browse' => 'Page Browse',
+            'pages.create' => 'Page Create ',
+            'pages.edit' => 'Page Edit',
+            'pages.delete' => 'Page Delete',
         ];
     }
 }
