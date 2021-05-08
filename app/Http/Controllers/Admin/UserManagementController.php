@@ -37,7 +37,6 @@ class UserManagementController extends AdminBaseController
     
     public function store(UserManagementRequest $request)
     {
-        dd($request->all());
         $user = User::create($request->only(User::FILLABLE_FIELDS));
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);

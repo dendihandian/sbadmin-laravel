@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exceptions\AdminRoleCannotBeChangedOrRemoved;
 use App\Http\Requests\RoleManagementRequest;
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoleManagementController extends AdminBaseController
@@ -17,6 +19,8 @@ class RoleManagementController extends AdminBaseController
         parent::__construct();
 
         $this->roleModel = $roleModel;
+
+        View::share('permissions', Permission::all());
     }
 
     public function index()
@@ -31,7 +35,10 @@ class RoleManagementController extends AdminBaseController
 
     public function store(RoleManagementRequest $request)
     {
-        $this->roleModel->create($request->only($this->roleModel->getFillable()));
+        $role = $this->roleModel->create($request->only($this->roleModel->getFillable()));
+
+        $role_permissions = array_keys($request->permissions);
+        $role->syncPermissions($role_permissions);
 
         $request->session()->flash('success', __('Role Created'));
         return redirect()->back();
@@ -57,6 +64,9 @@ class RoleManagementController extends AdminBaseController
         $role = $request->role;
 
         $role->update($request->only($this->roleModel->getFillable()));
+
+        $role_permissions = array_keys($request->permissions);
+        $role->syncPermissions($role_permissions);
 
         $request->session()->flash('success', __('Role Updated'));
         return redirect()->back();

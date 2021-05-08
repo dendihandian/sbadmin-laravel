@@ -11,14 +11,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">{{ __('Edit Role') }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('Create Role') }}</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.roles.update', ['roleId' => $role->id]) }}" method="POST">
-                @csrf
-                @method('PATCH')
-                @include('admin.roles._partials.form')
-                @include('admin.roles._partials.form-permissions')
+            @include('admin.roles._partials.form', ['readonly' => true])
+            @include('admin.roles._partials.form-permissions', ['readonly' => true])
                 <div class="row">
                     <div class="form-group col-lg-12 d-flex justify-content-end">
                         <a href="{{ route('admin.roles.index') }}" class="btn btn-secondary text-white ml-1">{{ __('Back') }}</a>
