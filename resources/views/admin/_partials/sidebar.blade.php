@@ -13,55 +13,65 @@
             <span>{{ __('Dashboard') }}</span>
         </a>
     </li>
-    
-    
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        {{ __('Content Management') }}
-    </div>
+    {{-- Content Management --}}
+    @if ($loggedUser->hasAnyPermission(['posts.browse', 'pages.browse']))
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-    <!-- Nav Item -->
-    <li class="nav-item">
-        <a class="nav-link py-2" href="charts.html">
-            <i class="fas fa-fw fa-thumbtack"></i>
-            <span>{{ __('Posts') }}</span>
-        </a>
-    </li>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('Content Management') }}
+        </div>
 
-    <!-- Nav Item -->
-    <li class="nav-item">
-        <a class="nav-link py-2" href="charts.html">
-            <i class="fas fa-fw fa-newspaper"></i>
-            <span>{{ __('Pages') }}</span>
-        </a>
-    </li>
+        <!-- Nav Item -->
+        <li class="nav-item">
+            <a class="nav-link py-2" href="charts.html">
+                <i class="fas fa-fw fa-thumbtack"></i>
+                <span>{{ __('Posts') }}</span>
+            </a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Nav Item -->
+        <li class="nav-item">
+            <a class="nav-link py-2" href="charts.html">
+                <i class="fas fa-fw fa-newspaper"></i>
+                <span>{{ __('Pages') }}</span>
+            </a>
+        </li>
+    @endif
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        {{ __('Administration') }}
-    </div>
+    {{-- Administration --}}
+    @if ($loggedUser->hasAnyPermission(['users.browse', 'roles.browse']))
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-    <!-- Nav Item -->
-    <li class="nav-item @if (route('admin.users.index') === $currentUrl) active @endif">
-        <a class="nav-link py-2" href="{{ route('admin.users.index') }}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>{{ __('Users Management') }}</span>
-        </a>
-    </li>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('Administration') }}
+        </div>
 
-    <!-- Nav Item -->
-    <li class="nav-item @if (route('admin.roles.index') === $currentUrl) active @endif">
-        <a class="nav-link py-2" href="{{ route('admin.roles.index') }}">
-            <i class="fas fa-fw fa-user-tag"></i>
-            <span>{{ __('Roles Management') }}</span>
-        </a>
-    </li>
+        <!-- Nav Item -->
+        @if ($loggedUser->can('users.browse'))
+        <li class="nav-item @if (route('admin.users.index') === $currentUrl) active @endif">
+            <a class="nav-link py-2" href="{{ route('admin.users.index') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>{{ __('Users Management') }}</span>
+            </a>
+        </li>
+        @endif
+
+        <!-- Nav Item -->
+        @if ($loggedUser->can('roles.browse'))
+        <li class="nav-item @if (route('admin.roles.index') === $currentUrl) active @endif">
+            <a class="nav-link py-2" href="{{ route('admin.roles.index') }}">
+                <i class="fas fa-fw fa-user-tag"></i>
+                <span>{{ __('Roles Management') }}</span>
+            </a>
+        </li>
+        @endif
+
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

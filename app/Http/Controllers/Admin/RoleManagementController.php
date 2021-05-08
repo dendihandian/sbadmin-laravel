@@ -7,6 +7,7 @@ use App\Http\Requests\RoleManagementRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -16,7 +17,7 @@ class RoleManagementController extends AdminBaseController
     {
         parent::__construct();
 
-        View::share('permissions', Permission::all());
+        View::share('permissions', $this->getCachedPermissions());
     }
 
     public function index()

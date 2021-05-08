@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -18,11 +19,8 @@ class UserManagementController extends AdminBaseController
     {
         parent::__construct();
 
-        View::share('role_options', Role::all()->keyBy('name')->transform(function($role){
-            return $role->display_name ?? $role->name;
-        })); // TODO: better if cached
-
-        View::share('permissions', Permission::all());
+        View::share('role_options', $this->getCachedRoleOptions());
+        View::share('permissions', $this->getCachedPermissions());
     }
 
     public function index()

@@ -72,7 +72,7 @@ class AdminCreateCommand extends Command
             'password' => $hashed_password
         ]);
 
-        $user->assignRole('admin');
+        $user->assignRole('administrator');
 
         $this->info('Admin created');
 
