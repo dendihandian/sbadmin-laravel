@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDisplayNameAndDescriptionToRolesTable extends Migration
+class AddDisplayNameAndDescriptionToPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddDisplayNameAndDescriptionToRolesTable extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
+        Schema::table('permissions', function (Blueprint $table) {
             $table->text('display_name')->nullable()->after('name');
             $table->text('description')->nullable()->after('display_name');
         });
@@ -26,7 +26,7 @@ class AddDisplayNameAndDescriptionToRolesTable extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
+        Schema::table('permissions', function (Blueprint $table) {
             $table->dropColumn('description');
             $table->dropColumn('display_name');
         });
