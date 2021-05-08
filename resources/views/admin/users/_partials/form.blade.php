@@ -36,7 +36,7 @@
 <div class="row">
     @include('admin._components.forms.select', [
         '_name' => 'role',
-        '_options' => $role_options,
+        '_options' => $roleOptions,
         '_value' => $user->roles[0]->name ?? null,
         '_title' => __('User Role'),
         '_desc' => __('Role of the user'),
