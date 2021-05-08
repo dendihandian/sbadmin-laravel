@@ -73,6 +73,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'roles.create' => 'Create Role',
             'roles.edit' => 'Edit Role',
             'roles.delete' => 'Delete Role',
+
+            // Posts
+            'posts.browse' => 'Browse Post',
+            'posts.create' => 'Create Post',
+            'posts.edit' => 'Edit Post',
+            'posts.delete' => 'Delete Post',
         ];
     }
 }

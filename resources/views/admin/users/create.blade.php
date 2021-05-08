@@ -17,6 +17,7 @@
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
                 @include('admin.users._partials.form')
+                @include('admin.users._partials.form-permissions')
                 <div class="row">
                     <div class="form-group col-lg-12 d-flex justify-content-end">
                         <a href="{{ route('admin.users.index') }}" class="btn btn-secondary text-white ml-1">{{ __('Back') }}</a>

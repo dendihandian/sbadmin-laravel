@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exceptions\YouCannotDeleteYourself;
 use App\Http\Requests\UserManagementRequest;
+use App\Models\Permission;
 use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
@@ -20,6 +21,8 @@ class UserManagementController extends AdminBaseController
         View::share('role_options', Role::all()->keyBy('name')->transform(function($role){
             return $role->display_name ?? $role->name;
         })); // TODO: better if cached
+
+        View::share('permissions', Permission::all());
     }
 
     public function index()
@@ -34,9 +37,13 @@ class UserManagementController extends AdminBaseController
     
     public function store(UserManagementRequest $request)
     {
+        dd($request->all());
         $user = User::create($request->only(User::FILLABLE_FIELDS));
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);
+
+        $user_permissions = array_keys($request->permissions);
+        $user->syncPermissions($user_permissions);
 
         $request->session()->flash('success', __('User Created'));
         return redirect()->back();
@@ -60,6 +67,9 @@ class UserManagementController extends AdminBaseController
         $user->update($request->only(User::FILLABLE_FIELDS));
 
         if ($request->role ?? false) $user->syncRoles([$request->role]);
+
+        $user_permissions = ($request->permissions ?? false) ? array_keys($request->permissions) : [];
+        $user->syncPermissions($user_permissions);
 
         $request->session()->flash('success', __('User Updated'));
         return redirect()->back();
