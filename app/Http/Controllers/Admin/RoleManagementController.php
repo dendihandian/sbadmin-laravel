@@ -12,13 +12,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class RoleManagementController extends AdminBaseController
 {
-    protected $roleModel;
-
-    public function __construct(Role $roleModel)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->roleModel = $roleModel;
 
         View::share('permissions', Permission::all());
     }
@@ -35,7 +31,7 @@ class RoleManagementController extends AdminBaseController
 
     public function store(RoleManagementRequest $request)
     {
-        $role = $this->roleModel->create($request->only($this->roleModel->getFillable()));
+        $role = Role::create($request->only(Role::FILLABLE_FIELDS));
 
         $role_permissions = array_keys($request->permissions);
         $role->syncPermissions($role_permissions);
@@ -63,7 +59,7 @@ class RoleManagementController extends AdminBaseController
         $this->checkForAdminRole($request);
         $role = $request->role;
 
-        $role->update($request->only($this->roleModel->getFillable()));
+        $role->update($request->only(Role::FILLABLE_FIELDS));
 
         $role_permissions = array_keys($request->permissions);
         $role->syncPermissions($role_permissions);

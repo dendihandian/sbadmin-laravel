@@ -9,5 +9,7 @@ class Permission extends SpatiePermissionModel
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
+    const FILLABLE_FIELDS = ['name', 'display_name', 'description', 'guard_name'];
+
+    protected $fillable = self::FILLABLE_FIELDS;
 }
