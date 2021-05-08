@@ -8,7 +8,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <li class="nav-item @if (route('admin.dashboard') === $currentUrl) active @endif">
-        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+        <a class="nav-link py-2" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('Dashboard') }}</span>
         </a>
@@ -25,16 +25,16 @@
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
+        <a class="nav-link py-2" href="charts.html">
+            <i class="fas fa-fw fa-thumbtack"></i>
             <span>{{ __('Posts') }}</span>
         </a>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
+        <a class="nav-link py-2" href="charts.html">
+            <i class="fas fa-fw fa-newspaper"></i>
             <span>{{ __('Pages') }}</span>
         </a>
     </li>
@@ -49,16 +49,16 @@
 
     <!-- Nav Item -->
     <li class="nav-item @if (route('admin.users.index') === $currentUrl) active @endif">
-        <a class="nav-link" href="{{ route('admin.users.index') }}">
-            <i class="fas fa-fw fa-user"></i>
+        <a class="nav-link py-2" href="{{ route('admin.users.index') }}">
+            <i class="fas fa-fw fa-users"></i>
             <span>{{ __('Users Management') }}</span>
         </a>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item @if (route('admin.roles.index') === $currentUrl) active @endif">
-        <a class="nav-link" href="{{ route('admin.roles.index') }}">
-            <i class="fas fa-fw fa-user"></i>
+        <a class="nav-link py-2" href="{{ route('admin.roles.index') }}">
+            <i class="fas fa-fw fa-user-tag"></i>
             <span>{{ __('Roles Management') }}</span>
         </a>
     </li>
