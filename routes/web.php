@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\PostManagementController;
 use App\Http\Controllers\Admin\RoleManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 
@@ -52,6 +53,21 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
             Route::patch('/', [RoleManagementController::class, 'update'])->name('update')->middleware('can:roles.edit'); // admin.roles.update
             Route::delete('/', [RoleManagementController::class, 'delete'])->name('delete')->middleware('can:roles.delete'); // admin.roles.delete
             Route::get('/edit', [RoleManagementController::class, 'edit'])->name('edit')->middleware('can:roles.edit'); // admin.roles.edit
+        });
+    });
+
+    // Post Management
+    Route::prefix('posts')->name('posts.')->middleware(['can:posts.browse'])->group(function () {
+        Route::get('/', [PostManagementController::class, 'index'])->name('index'); // admin.posts.index
+        Route::post('/', [PostManagementController::class, 'store'])->name('store')->middleware('can:posts.create'); // admin.posts.store
+        Route::get('/create', [PostManagementController::class, 'create'])->name('create')->middleware('can:posts.create'); // admin.posts.create
+        Route::get('/datatable', [PostManagementController::class, 'datatable'])->name('datatable'); // admin.posts.datatable
+
+        Route::prefix('{postId}')->middleware(['find_post'])->group(function () {
+            Route::get('/', [PostManagementController::class, 'show'])->name('show'); // admin.posts.show
+            Route::patch('/', [PostManagementController::class, 'update'])->name('update')->middleware('can:posts.edit'); // admin.posts.update
+            Route::delete('/', [PostManagementController::class, 'delete'])->name('delete')->middleware('can:posts.delete'); // admin.posts.delete
+            Route::get('/edit', [PostManagementController::class, 'edit'])->name('edit')->middleware('can:posts.edit'); // admin.posts.edit
         });
     });
 });

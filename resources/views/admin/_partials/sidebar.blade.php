@@ -25,12 +25,14 @@
         </div>
 
         <!-- Nav Item -->
-        <li class="nav-item">
-            <a class="nav-link py-2" href="charts.html">
+        @if ($loggedUser->can('posts.browse'))
+        <li class="nav-item @if (route('admin.posts.index') === $currentUrl) active @endif">
+            <a class="nav-link py-2" href="{{ route('admin.posts.index') }}">
                 <i class="fas fa-fw fa-thumbtack"></i>
                 <span>{{ __('Posts') }}</span>
             </a>
         </li>
+        @endif
 
         <!-- Nav Item -->
         <li class="nav-item">
