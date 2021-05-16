@@ -72,7 +72,7 @@ class UserManagementController extends AdminBaseController
         return redirect()->back();
     }
 
-    public function delete(Request $request, int $userId)
+    public function destroy(Request $request, int $userId)
     {
         $user = $request->_user;
         if ($request->user()->id === (int) $user->id) {

@@ -8,6 +8,6 @@
 
 @include('admin._components.table-actions.action-delete', [
     '_id' => "delete-post-" . $post->id ?? '0',
-    '_text' => "Do you want to delete " . $post->name . "?",
+    '_text' => "Do you want to delete " . $post->title . "?",
     '_url' => route('admin.posts.delete', ['postId' => $post->id ?? 0])
 ])

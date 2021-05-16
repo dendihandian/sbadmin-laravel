@@ -69,7 +69,7 @@ class RoleManagementController extends AdminBaseController
         return redirect()->back();
     }
 
-    public function delete(Request $request, int $roleId)
+    public function destroy(Request $request, int $roleId)
     {
         $this->checkForAdminRole($request);
         $role = $request->role;

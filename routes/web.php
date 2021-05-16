@@ -36,7 +36,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::prefix('{userId}')->middleware(['find_user'])->group(function () {
             Route::get('/', [UserManagementController::class, 'show'])->name('show'); // admin.users.show
             Route::patch('/', [UserManagementController::class, 'update'])->name('update')->middleware('can:users.edit'); // admin.users.update
-            Route::delete('/', [UserManagementController::class, 'delete'])->name('delete')->middleware('can:users.delete'); // admin.users.delete
+            Route::delete('/', [UserManagementController::class, 'destroy'])->name('delete')->middleware('can:users.delete'); // admin.users.delete
             Route::get('/edit', [UserManagementController::class, 'edit'])->name('edit')->middleware('can:users.edit'); // admin.users.edit
         });
     });
@@ -51,7 +51,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::prefix('{roleId}')->middleware(['find_role'])->group(function () {
             Route::get('/', [RoleManagementController::class, 'show'])->name('show'); // admin.roles.show
             Route::patch('/', [RoleManagementController::class, 'update'])->name('update')->middleware('can:roles.edit'); // admin.roles.update
-            Route::delete('/', [RoleManagementController::class, 'delete'])->name('delete')->middleware('can:roles.delete'); // admin.roles.delete
+            Route::delete('/', [RoleManagementController::class, 'destroy'])->name('delete')->middleware('can:roles.delete'); // admin.roles.delete
             Route::get('/edit', [RoleManagementController::class, 'edit'])->name('edit')->middleware('can:roles.edit'); // admin.roles.edit
         });
     });
@@ -66,7 +66,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         Route::prefix('{postId}')->middleware(['find_post'])->group(function () {
             Route::get('/', [PostManagementController::class, 'show'])->name('show'); // admin.posts.show
             Route::patch('/', [PostManagementController::class, 'update'])->name('update')->middleware('can:posts.edit'); // admin.posts.update
-            Route::delete('/', [PostManagementController::class, 'delete'])->name('delete')->middleware('can:posts.delete'); // admin.posts.delete
+            Route::delete('/', [PostManagementController::class, 'destroy'])->name('delete')->middleware('can:posts.delete'); // admin.posts.delete
             Route::get('/edit', [PostManagementController::class, 'edit'])->name('edit')->middleware('can:posts.edit'); // admin.posts.edit
         });
     });
