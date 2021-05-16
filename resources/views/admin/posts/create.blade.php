@@ -16,6 +16,7 @@
         <div class="card-body">
             <form action="{{ route('admin.posts.store') }}" method="POST">
                 @csrf
+
                 @include('admin.posts._partials.form')
                 <div class="row">
                     <div class="form-group col-lg-12 d-flex justify-content-end">
