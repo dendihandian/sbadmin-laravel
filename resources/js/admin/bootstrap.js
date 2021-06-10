@@ -8,10 +8,13 @@ try {
     require('jquery.easing');
     require('chart.js/dist/Chart.bundle');
 
-    // these require still causing issue
     require('datatables.net-bs4');
 
     require('startbootstrap-sb-admin-2/js/sb-admin-2');
+
+    // select2
+    require('select2');
+    $('.custom-select').select2({theme: 'bootstrap4', width: 'resolve'});
 
 } catch (error) {
     console.log(error);
