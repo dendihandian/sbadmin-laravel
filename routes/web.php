@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\PostManagementController;
 use App\Http\Controllers\Admin\RoleManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\UtilitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
             Route::delete('/', [PostManagementController::class, 'destroy'])->name('delete')->middleware('can:posts.delete'); // admin.posts.delete
             Route::get('/edit', [PostManagementController::class, 'edit'])->name('edit')->middleware('can:posts.edit'); // admin.posts.edit
         });
+    });
+
+    Route::prefix('utilities')->name('utilities.')->group(function(){
+        Route::post('/sidebar-toggler', [UtilitiesController::class, 'sidebarToggler'])->name('sidebar-toggler'); // admin.utilities.sidebar-toggler
     });
 });

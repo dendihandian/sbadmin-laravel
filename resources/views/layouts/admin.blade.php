@@ -71,6 +71,8 @@
     <!-- Scripts -->
     <script src="{{ mix('js/admin.js') }}"></script>
 
+    @include('admin._partials.scripts')
+
     <!-- The Page Specific Script -->
     @yield('script')
 

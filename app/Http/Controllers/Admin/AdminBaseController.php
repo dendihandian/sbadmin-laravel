@@ -12,6 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class AdminBaseController extends BaseController
 {
@@ -26,6 +27,8 @@ class AdminBaseController extends BaseController
 
             return $next($request);
         });
+
+        // dump(Session::all());
     }
 
     public function getCachedPermissions()
