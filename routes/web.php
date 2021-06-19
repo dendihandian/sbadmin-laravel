@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\PostManagementController;
 use App\Http\Controllers\Admin\RoleManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -74,5 +75,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 
     Route::prefix('utilities')->name('utilities.')->group(function(){
         Route::post('/sidebar-toggler', [UtilitiesController::class, 'sidebarToggler'])->name('sidebar-toggler'); // admin.utilities.sidebar-toggler
+    });
+
+    // File Utilities
+    Route::prefix('file')->name('file.')->group(function(){
+        Route::post('/', [FileController::class, 'store'])->name('store');
+        Route::delete('/', [FileController::class, 'destroy'])->name('delete');
     });
 });

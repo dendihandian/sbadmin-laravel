@@ -1,21 +1,12 @@
-import * as FilePond from 'filepond';
+import { parse, create as filepondCreate } from 'filepond';
 
 function initFilepond()
 {
-
     // Parse filepond from body
-    FilePond.parse(document.body);
-    
-    // // Get a file input reference
-    // const input = document.querySelector('input[type="file"]');
-    
-    // console.log('input', input);
-    
-    // // Create a FilePond instance and post files to /upload
-    // FilePond.create(input);
-
+    parse(document.body);
 }
 
 export {
-    initFilepond 
+    initFilepond,
+    filepondCreate
 };

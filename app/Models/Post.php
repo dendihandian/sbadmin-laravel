@@ -15,6 +15,7 @@ class Post extends Model implements HasMedia
         'slug',
         'excerpt',
         'body',
+        'image',
     ];
 
     protected $fillable = self::FILLABLE_FIELDS;
