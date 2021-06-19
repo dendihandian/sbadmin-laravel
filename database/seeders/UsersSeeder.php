@@ -15,9 +15,9 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        if (!User::where('email', 'admin@sbadmin.test')->exists()) {
+        if (!User::where('email', ($email = 'admin@laravel.test'))->exists()) {
             $user = User::factory()->new()->create([
-                'email' => 'admin@laravel.test',
+                'email' => $email,
                 'password' => Hash::make('password'),
             ]);
 

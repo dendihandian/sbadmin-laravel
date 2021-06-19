@@ -1,3 +1,21 @@
+# SBAdmin Laravel Starter
+
+PHP Extensions:
+- mbstring (for laravel)
+- fileinfo (for laravel)
+- gd2 (for laravel)
+- curl (for laravel)
+- openssl (for laravel)
+- intl (for laravel)
+- xsl (for laravel)
+- exif (for spatie/laravel-medialibrary)
+- mysqli & pdo_mysql (if you're using mysql database)
+- pgsql & pdo_pgsql (if you're using postgresql database)
+- sqlite3 & pdo_sqlite (if you're using sqlite database)
+
+
+_______________
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
