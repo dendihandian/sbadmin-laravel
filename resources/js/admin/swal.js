@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-window.deleteConfirm = function(formId, text)
+function deleteConfirm(formId, text)
 {
     Swal.fire({
         icon: 'warning',
@@ -14,3 +14,7 @@ window.deleteConfirm = function(formId, text)
         }
     });
 }
+
+export {
+    deleteConfirm
+};

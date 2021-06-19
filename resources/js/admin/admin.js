@@ -1,6 +1,12 @@
 require('./bootstrap');
 
-import './swal';
-import * as FilePond from 'filepond';
+import { initFilepond } from './filepond';
+import { deleteConfirm } from './swal';
 
-FilePond.parse(document.body);
+// window object assignations
+window.deleteConfirm = deleteConfirm;
+
+// document on load
+$(document).ready(function(){
+    initFilepond();
+});
