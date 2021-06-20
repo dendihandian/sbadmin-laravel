@@ -18,6 +18,7 @@ class UsersSeeder extends Seeder
         if (!User::where('email', ($email = 'admin@laravel.test'))->exists()) {
             $user = User::factory()->new()->create([
                 'email' => $email,
+                'name' => 'admin',
                 'password' => Hash::make('password'),
             ]);
 

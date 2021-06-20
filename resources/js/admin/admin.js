@@ -9,5 +9,5 @@ window.filepondCreate = filepondCreate;
 
 // document on load
 $(document).ready(function(){
-    initFilepond();
+    // NOTE: that initFilepond function is already loaded... I don't know why.
 });
