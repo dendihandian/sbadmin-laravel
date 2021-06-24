@@ -47,6 +47,8 @@ class PostManagementController extends AdminBaseController
 
     public function update(PostManagementRequest $request)
     {
+        // TODO: continue the filepond functionality
+        // dd($request->all());
         $post = $request->post;
         $post->update($request->only(Post::FILLABLE_FIELDS));
 
