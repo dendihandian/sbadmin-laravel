@@ -15,8 +15,13 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        // NOTE: 
+        // since the Faker\Factory is a dev dependency package, 
+        // let's assume it won't installed on production.
+        // so, use the model creation instead
+
         if (!User::where('email', ($email = 'admin@laravel.test'))->exists()) {
-            $user = User::factory()->new()->create([
+            $user = User::create([
                 'email' => $email,
                 'name' => 'admin',
                 'password' => Hash::make('password'),
