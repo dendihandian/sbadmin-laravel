@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Admin\FindPostMiddleware;
 use App\Http\Middleware\Admin\FindRoleMiddleware;
 use App\Http\Middleware\Admin\FindUserMiddleware;
+use App\Http\Middleware\DemoMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,5 +70,6 @@ class Kernel extends HttpKernel
         'find_role' => FindRoleMiddleware::class,
         'find_user' => FindUserMiddleware::class,
         'find_post' => FindPostMiddleware::class,
+        'demo' => DemoMiddleware::class,
     ];
 }
