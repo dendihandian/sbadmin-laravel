@@ -20,13 +20,14 @@ use App\Http\Controllers\Admin\UtilitiesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // NOTE: Since we got no FE yet, we redirect the landing page to admin dashboard. If not authenticated, then redirected to login page.
+    return redirect()->route('admin.dashboard');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
 
     Route::get('/', function(){ return redirect()->route('admin.dashboard'); });
-    Route::get('/dashboard', [AdminHomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [AdminHomeController::class, 'dashboard'])->name('dashboard'); // admin.dashboard
 
     // User Management
     Route::prefix('users')->name('users.')->middleware(['can:users.browse'])->group(function () {
