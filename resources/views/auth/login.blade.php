@@ -54,9 +54,11 @@
                                         <a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                                     </div>
                                 @endif
-                                <div class="text-center">
-                                    <a class="small" href="{{ route('register') }}">{{ __('Create an Account!') }}</a>
-                                </div>
+                                @if (Route::has('register'))
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('register') }}">{{ __('Create an Account!') }}</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
