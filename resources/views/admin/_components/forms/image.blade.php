@@ -5,7 +5,7 @@
         @if ($_file_link ?? false)
             <div class="col-12">
                 {{-- TODO: do a better image view --}}
-                <img src="{{ $_file_link }}" alt="{{ $_title }}">
+                <img class="img-thumbnail image-view" src="{{ $_file_link }}" alt="{{ $_title }}" style="cursor: pointer; width: 4rem;">
             </div>
         @endif
     @else

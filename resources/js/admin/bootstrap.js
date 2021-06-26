@@ -19,6 +19,8 @@ try {
 
     // end of jQuery and the dependants
 
+    
+
 } catch (error) {
     console.log(error);
 }
