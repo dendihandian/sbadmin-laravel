@@ -18,6 +18,12 @@
  */
 
 /*!
+ * FilePondPluginImagePreview 4.6.6
+ * Licensed under MIT, https://opensource.org/licenses/MIT/
+ * Please visit https://pqina.nl/filepond/ for details.
+ */
+
+/*!
  * Select2 4.1.0-rc.0
  * https://select2.github.io
  *
@@ -34,6 +40,16 @@
  * https://js.foundation/
  *
  * Date: 2020-03-14
+ */
+
+/*!
+ * Viewer.js v1.10.0
+ * https://fengyuanchen.github.io/viewerjs
+ *
+ * Copyright 2015-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2021-06-12T07:57:10.970Z
  */
 
 /*!
