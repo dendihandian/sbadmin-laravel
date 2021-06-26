@@ -1,12 +1,14 @@
-import { parse, create as filepondCreate } from 'filepond';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 
-function initFilepond()
-{
-    // Parse filepond from body
-    parse(document.body);
+try {
+    // start of Filepond
+    window.FilePond = require('filepond');
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview
+    );
+    
+    FilePond.parse(document.body);
+    // end of Filepond
+} catch (error) {
+    console.log(error);
 }
-
-export {
-    initFilepond,
-    filepondCreate
-};

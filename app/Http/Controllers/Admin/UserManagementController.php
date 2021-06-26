@@ -19,7 +19,7 @@ class UserManagementController extends AdminBaseController
     {
         parent::__construct();
 
-        View::share('roleOptions', $this->getCachedRoleOptions());
+        View::share('role_options', $this->getCachedRoleOptions());
         View::share('permissions', $this->getCachedPermissions());
     }
 

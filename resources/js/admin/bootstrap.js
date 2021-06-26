@@ -1,6 +1,7 @@
 window._ = require('lodash');
 
 try {
+    // start of jQuery and the dependants
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
@@ -15,6 +16,10 @@ try {
     // select2
     require('select2');
     $('.custom-select').select2({theme: 'bootstrap4', width: 'resolve'});
+
+    // end of jQuery and the dependants
+
+    
 
 } catch (error) {
     console.log(error);

@@ -82,5 +82,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'demo'])->group(func
     Route::prefix('file')->name('file.')->group(function(){
         Route::post('/', [FileController::class, 'store'])->name('store');
         Route::delete('/', [FileController::class, 'destroy'])->name('delete');
+        Route::get('/image/{filename}', [FileController::class, 'image'])->name('image');
     });
 });

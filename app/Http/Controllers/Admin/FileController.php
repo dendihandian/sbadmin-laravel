@@ -9,6 +9,12 @@ use Illuminate\Support\Str;
 
 class FileController extends Controller
 {
+    public function image(Request $request, $filename)
+    {
+        $base64image = Storage::get("files/{$filename}");
+        return response($base64image)->header('Content-Type', 'image/png');
+    }
+
     public function store(Request $request)
     {
         $file = $request->file($request->name);

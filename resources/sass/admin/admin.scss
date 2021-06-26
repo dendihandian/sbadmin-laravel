@@ -13,10 +13,18 @@ $primary: rgb(4, 84, 131);
 
 // Filepond
 @import "~filepond/dist/filepond.css";
+@import "~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 // Select2
 @import "~select2/dist/css/select2.css";
 @import "~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css";
 
+// ViewerJS
+@import "~viewerjs/src/css/viewer.scss";
+
 // SBAdmin
 @import "~startbootstrap-sb-admin-2/scss/sb-admin-2";
+
+// Components
+@import "components/select2.scss";
+@import "components/filepond.scss";

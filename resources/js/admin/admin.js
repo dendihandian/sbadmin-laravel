@@ -1,13 +1,25 @@
 require('./bootstrap');
+require('./filepond');
+// require('./viewer');
 
-import { initFilepond, filepondCreate } from './filepond';
 import { deleteConfirm } from './swal';
+import Viewer from 'viewerjs';
 
 // window object assignations
 window.deleteConfirm = deleteConfirm;
-window.filepondCreate = filepondCreate;
 
 // document on load
 $(document).ready(function(){
-    // NOTE: that initFilepond function is already loaded... I don't know why.
+    // do anything on page loaded
+
+    $('.image-view').each(function(index, el){
+        console.log(`el`, el);
+        console.log(`index`, index);
+        const viewer = new Viewer(el, {
+            inline: false,
+            viewed() {
+                viewer.zoomTo(1);
+            },
+        });
+    });
 });
