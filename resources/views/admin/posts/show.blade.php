@@ -14,7 +14,7 @@
             <h6 class="m-0 font-weight-bold text-primary">{{ __('Post Detail') }}</h6>
         </div>
         <div class="card-body">
-            
+            @include('admin.posts._partials.form', ['_readonly' => true])
         </div>
     </div>
 

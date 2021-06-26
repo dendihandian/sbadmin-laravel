@@ -14,8 +14,8 @@
             <h6 class="m-0 font-weight-bold text-primary">{{ __('User Detail') }}</h6>
         </div>
         <div class="card-body">
-            @include('admin.users._partials.form', ['readonly' => true])
-            @include('admin.users._partials.form-permissions', ['readonly' => true])
+            @include('admin.users._partials.form', ['_readonly' => true])
+            @include('admin.users._partials.form-permissions', ['_readonly' => true])
             <div class="row">
                 <div class="form-group col-lg-12 d-flex justify-content-end">
                     <a href="{{ route('admin.users.index') }}" class="btn btn-secondary text-white ml-1">{{ __('Back') }}</a>

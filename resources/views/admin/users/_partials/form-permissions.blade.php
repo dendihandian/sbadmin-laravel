@@ -12,7 +12,7 @@
         <div class="col-lg-4">
             @foreach ($_permissions_chunk as $_permission)
             <div class="d-flex justify-content-start align-items-center">
-                <input name="permissions[{{ $_permission->name}}]" type="checkbox" @if (in_array($_permission->id, $_user_permission_ids)) checked @endif @if ($readonly ?? false) disabled @endif /><span class="ml-2">{{ $_permission->display_name ?? $_permission->name }}</span>
+                <input name="permissions[{{ $_permission->name}}]" type="checkbox" @if (in_array($_permission->id, $_user_permission_ids)) checked @endif @if ($_readonly ?? false) disabled @endif /><span class="ml-2">{{ $_permission->display_name ?? $_permission->name }}</span>
             </div>
             @endforeach
         </div>
