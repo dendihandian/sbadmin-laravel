@@ -1,0 +1,11 @@
+// more on: https://pqina.nl/filepond/docs/api/style/#fonts-and-colors
+
+/* the background color of the filepond drop area */
+.filepond--panel-root {
+    background-color: $primary
+}
+
+/* the text color of the drop label*/
+.filepond--drop-label {
+    color: white;
+}
