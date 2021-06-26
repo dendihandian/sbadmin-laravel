@@ -1,11 +1,10 @@
-<div class="form-group col-lg-{{ $_col ?? 6 }}">
+<div class="form-image form-group col-lg-{{ $_col ?? 6 }}">
     <label for="{{ $_name }}">{{ $_title ?? '' }}</label>
 
     @if ($_readonly ?? false)
         @if ($_file_link ?? false)
             <div class="col-12">
-                {{-- TODO: do a better image view --}}
-                <img class="img-thumbnail image-view" src="{{ $_file_link }}" alt="{{ $_title }}" style="cursor: pointer; width: 4rem;">
+                <img class="img-thumbnail image-view" src="{{ $_file_link }}" alt="{{ $_title }}">
             </div>
         @endif
     @else
