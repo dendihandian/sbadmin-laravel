@@ -71,7 +71,7 @@
 
         console.log(`filepond_config`, filepond_config);
 
-        filepondCreate(input, filepond_config);
+        FilePond.create(input, filepond_config);
 
     }
 
