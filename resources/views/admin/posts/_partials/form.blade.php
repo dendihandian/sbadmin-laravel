@@ -23,3 +23,13 @@
         '_readonly' => $_readonly,
     ])
 </div>
+
+<div class="row">
+    @include('admin._components.forms.wysiwyg', [
+        '_title' => __('Content'),
+        '_name' => 'body',
+        '_value' => $post->body ?? '',
+        '_col' => 6,
+        '_readonly' => $_readonly,
+    ])
+</div>

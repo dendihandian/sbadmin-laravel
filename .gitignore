@@ -14,7 +14,12 @@ yarn-error.log
 
 
 /public/css/admin.css
+/public/css/admin.css.map
 /public/css/app.css
 /public/js/admin.js
+/public/js/admin.js.map
+/public/js/admin.js.LICENSE.txt
 /public/js/app.js
+/public/js/app.js.map
+/public/js/app.js.LICENSE.txt
 mix-manifest.json

@@ -1,9 +1,9 @@
 require('./bootstrap');
 require('./filepond');
-// require('./viewer');
 
 import { deleteConfirm } from './swal';
 import Viewer from 'viewerjs';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
 
 // window object assignations
 window.deleteConfirm = deleteConfirm;
@@ -22,4 +22,11 @@ $(document).ready(function(){
             },
         });
     });
+
+    ClassicEditor
+        .create(document.querySelector('.wysiwyg'))
+        .catch(error => {
+            console.log(`error`, error)
+        });
+
 });
