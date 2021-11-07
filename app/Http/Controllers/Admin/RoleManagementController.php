@@ -34,7 +34,7 @@ class RoleManagementController extends AdminBaseController
     {
         $role = Role::create($request->only(Role::FILLABLE_FIELDS));
 
-        $role_permissions = array_keys($request->permissions);
+        $role_permissions = array_keys($request->permissions ?? []);
         $role->syncPermissions($role_permissions);
 
         $request->session()->flash('success', __('Role Created'));
@@ -62,7 +62,7 @@ class RoleManagementController extends AdminBaseController
 
         $role->update($request->only(Role::FILLABLE_FIELDS));
 
-        $role_permissions = array_keys($request->permissions);
+        $role_permissions = array_keys($request->permissions ?? []);
         $role->syncPermissions($role_permissions);
 
         $request->session()->flash('success', __('Role Updated'));
