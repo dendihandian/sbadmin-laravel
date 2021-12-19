@@ -40,7 +40,7 @@
 @endsection
 
 @section('script')
-    <script>
+    <script defer>
         $(document).ready(function(){
             $('#main-table').DataTable({
                 processing: true,
