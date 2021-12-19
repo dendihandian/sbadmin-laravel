@@ -1,7 +1,7 @@
 require('./bootstrap');
 require('./filepond');
 
-import { deleteConfirm } from './swal';
+import { deleteConfirm } from './alerts';
 import Viewer from 'viewerjs';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
 

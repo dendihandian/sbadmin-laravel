@@ -6,24 +6,21 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Variables
-$primary: rgb(4, 84, 131);
+@import "variable";
 
-// Datatables BS4
-@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+// SBAdmin
+@import "~startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.css";
+@import "~startbootstrap-sb-admin-2/scss/sb-admin-2";
+
+// Select2
+@import "~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css";
 
 // Filepond
 @import "~filepond/dist/filepond.css";
 @import "~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
-// Select2
-@import "~select2/dist/css/select2.css";
-@import "~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.css";
-
 // ViewerJS
 @import "~viewerjs/src/css/viewer.scss";
-
-// SBAdmin
-@import "~startbootstrap-sb-admin-2/scss/sb-admin-2";
 
 // Components
 @import "components/select2.scss";

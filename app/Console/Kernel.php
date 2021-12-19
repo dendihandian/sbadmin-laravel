@@ -2,8 +2,8 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Admin\UserCreateCommand;
-use App\Console\Commands\Admin\UserResetCommand;
+use App\Console\Commands\Admin\CreateCommand;
+use App\Console\Commands\Admin\ResetCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        UserCreateCommand::class,
-        UserResetCommand::class,
+        CreateCommand::class,
+        ResetCommand::class,
     ];
 
     /**

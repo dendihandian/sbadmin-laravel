@@ -6,14 +6,14 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
-class UserResetCommand extends Command
+class ResetCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'admin:user:reset-pw {email}';
+    protected $signature = 'admin:reset {email}';
 
     /**
      * The console command description.

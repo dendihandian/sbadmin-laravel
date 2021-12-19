@@ -8,14 +8,14 @@ use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
 
 
-class UserCreateCommand extends Command
+class CreateCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'admin:user:create';
+    protected $signature = 'admin:create';
 
     /**
      * The console command description.

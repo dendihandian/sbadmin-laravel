@@ -69,6 +69,10 @@
     @include('admin._partials.logout-modal')
 
     <!-- Scripts -->
+    <script src="{{ mix('js/sbadmin/jquery.min.js') }}"></script>
+    <script src="{{ mix('js/sbadmin/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ mix('js/sbadmin/jquery.easing.min.js') }}"></script>
+    <script src="{{ mix('js/sbadmin/sb-admin-2.min.js') }}"></script>
     <script src="{{ mix('js/admin.js') }}"></script>
 
     @include('admin._partials.scripts')

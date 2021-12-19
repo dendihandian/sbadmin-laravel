@@ -6,7 +6,7 @@ try {
     FilePond.registerPlugin(
         FilePondPluginImagePreview
     );
-    
+
     FilePond.parse(document.body);
     // end of Filepond
 } catch (error) {
